@@ -1,12 +1,15 @@
+// Carrega as variáveis de ambiente do arquivo .env
+require('dotenv').config();
+
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({
-	intents: [
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.MessageContent,
-		GatewayIntentBits.GuildMembers,
-	],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
+    ],
 });
 
 client.on('ready', () => {
@@ -14,7 +17,7 @@ client.on('ready', () => {
 });
 
 client.on('messageCreate', msg => {
-    console.log(`Received message: ${msg.content}`); // Log para ver se as mensagens estão sendo recebidas
+    console.log(`Received message: ${msg.content}`);
 
     const content = msg.content;
 
@@ -31,4 +34,4 @@ client.on('messageCreate', msg => {
     }
 });
 
-client.login('MTI2NTM1NzUyMzgxNzMzNjg5Mg.G5Yq2v.bZWl5IjRM6m5_eNxtay-5YrHXXKdoF634Se2C0')
+client.login(process.env.DISCORD_TOKEN);
